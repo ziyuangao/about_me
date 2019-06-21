@@ -27,6 +27,7 @@ export default {
         getNavList(){
             get('/home/getNavList','',data=>{
                 if (data.statusCode==200) {
+                    console.log(data)
                     this.navList = data.data
                 }
             })
