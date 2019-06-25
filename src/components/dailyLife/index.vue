@@ -1,19 +1,32 @@
 <template>
     <div>
-        超级大乐透   号码生成器
-        <div>
-            <el-button @click="createNumber" >本地随机生成</el-button>
-            <el-button @click='netCreate' >服务器随机生成</el-button>
-        </div>
-        <div>
-            <span v-if="bol" >{{localData}}</span>
-            <span v-else >{{netData}}</span>
-        </div>
+
+        <el-tabs tab-position="left">
+            <el-tab-pane label="大乐透">
+                超级大乐透   号码生成器
+                <div>
+                    <el-button @click="createNumber" >本地随机生成</el-button>
+                    <el-button @click='netCreate' >服务器随机生成</el-button>
+                </div>
+                <div>
+                    <span v-if="bol" >{{localData}}</span>
+                    <span v-else >{{netData}}</span>
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="云顶之奕">
+                <lol></lol>
+            </el-tab-pane>
+        </el-tabs>
+
     </div>
 </template>
 <script>
 import {get,post} from '@/actions/axios.js'
+import lol from './lol/index.vue'
 export default {
+    components:{
+        lol
+    },
     data(){
         return {
             bol:true,

@@ -12,24 +12,19 @@ import echarts from 'echarts'
 import axios from 'axios'; // ajax
 import axiosfn from './actions/axios.js'; // 对ajax配置
 global.axios = axiosfn(axios,router); // 把axios放到全局
+
 Vue.prototype.$echarts = echarts
+
 Object.keys(filters).forEach(k => Vue.filter(k, filters[k]));
+
+
 Vue.use(vuex); // 统一变量控制
+
 Vue.config.productionTip = false
+
 Vue.use(ElementUi, { size: 'small', zIndex: 3000 });
 
 
-router.beforeEach((to, from, next) => {
-    const user = localStorage.getItem('user');//用户名
-    if(!user && to.path !== '/login'){
-        next('/login');
-    }else{
-       next()
-    }
-})
-
-
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,

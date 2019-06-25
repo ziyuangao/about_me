@@ -1,8 +1,17 @@
+import qs from 'qs';
 import { Message } from 'element-ui';
-import axios from 'axios';
-export default function (axios,router) {
 
-  axios.defaults.timeout = 5000; //超时时间
+export default function (axios,router) {
+  axios.defaults.timeout = 50000; //超时时间
+
+  axios.interceptors.request.use((config) => {//去掉option测试请求
+      if(config.method === 'post') {
+          config.data = qs.stringify(config.data);
+      }
+      return config;
+  }, (error) => {
+      return Promise.reject(error);
+  }); 
 
   //响应器，获取数据成功还是失败
   axios.interceptors.response.use(
@@ -31,13 +40,16 @@ export default function (axios,router) {
           // 400 后端错误统一处理成400
           case 400:
             var errors = error.response.data.error;
-            //console.log(errors);
+
             Message({
               showClose: true,
               message: errors.message,
               type: 'error'
             });
-            //console.log(router)
+            if(errors.code == "00002"){
+                localStorage.removeItem('ms_username');
+                router.history.push("/login")
+            }
             break;
           // 其他错误，直接抛出错误提示
           default:
@@ -47,28 +59,83 @@ export default function (axios,router) {
     })
   return axios;
 }
-
-export function get(url,values,suc,err) {//get
-axios.get( myUrl + url, {
-    params:{...values}
-})
-.then(suc,err)
-}
-export function post(url,values,suc,err) {//post
-    axios.post( myUrl + url, {
-        ...values,
+/**
+ * 封装get/delete方法
+ * @param {请求接口路径} url
+ * @param {请求接口参数} params
+ * @param {请求回调方法} callback
+ */
+export function get(url, params={}, callback) {
+    axios.get(apiUrl + url,{
+        params,
     })
-    .then(suc,err)
-}
-export function deleteMsg(url,values,suc,err) {//delete
-    axios.delete( myUrl + url, {
-        data:{...values}
+    .then(response => {
+        callback && callback(response);
+    },err => {
+        Message({
+            showClose:true,
+            message: "请求数据异常",
+            type: 'error'
+        });
     })
-    .then(suc,err)
 }
-export function put(url,values,suc,err) {//put
-    axios.put( myUrl + url, {
-        ...values,
+/**
+ * 封装patch请求
+ * @param {请求接口路径} url
+ * @param {请求接口参数} params
+ * @param {请求回调方法} callback
+ */
+export function patch(url, params={}, callback) {
+    axios.patch(apiUrl + url,{
+        params:params
     })
-    .then(suc,err)
+    .then(response => {
+        callback && callback(response);
+    }).catch(err => {
+        Message({
+            showClose:true,
+            message: "请求数据异常",
+            type: 'error'
+        });
+    })
+}
+/**
+ * 封装post请求
+ * @param {请求接口路径} url
+ * @param {请求接口参数} params
+ * @param {请求回调方法} callback
+ */
+export function post(url, params={}, callback) {
+    axios.post(apiUrl + url,{
+        ...params
+    })
+    .then(response => {
+        callback && callback(response);
+    },err => {
+        Message({
+            showClose:true,
+            message: "请求数据异常",
+            type: 'error'
+        });
+    })
+}
+/**
+ * 封装put请求
+ * @param {请求接口路径} url
+ * @param {请求接口参数} params
+ * @param {请求回调方法} callback
+ */
+export function put(url, params={}, callback) {
+    axios.put(apiUrl + url,{
+        params:params
+    })
+    .then(response => {
+        callback && callback(response);
+    }).catch(err => {
+        Message({
+            showClose:true,
+            message: "请求数据异常",
+            type: 'error'
+        });
+    })
 }
