@@ -16,6 +16,9 @@
             <el-tab-pane label="云顶之奕">
                 <lol></lol>
             </el-tab-pane>
+            <el-tab-pane label="音乐播放器">
+                <mymusic></mymusic>
+            </el-tab-pane>
         </el-tabs>
 
     </div>
@@ -23,9 +26,10 @@
 <script>
 import {get,post} from '@/actions/axios.js'
 import lol from './lol/index.vue'
+import mymusic from './music/index.vue'
 export default {
     components:{
-        lol
+        lol,mymusic
     },
     data(){
         return {

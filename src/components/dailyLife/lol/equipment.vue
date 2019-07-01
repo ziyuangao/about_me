@@ -7,18 +7,18 @@
             <el-table-column type="selection"  width="55"  ></el-table-column>
             <el-table-column label='名称' prop='name' ></el-table-column>
             <el-table-column label='图标' >
-                <tempalte slot-scope="scope">
+                <template slot-scope="scope">
                     <img :src="scope.row.img" alt="">
-                </tempalte>
+                </template>
             </el-table-column>
             <el-table-column label='属性' prop='attr' ></el-table-column>
             <el-table-column label='合成方式' >
-                <tempalte slot-scope="scope">
+                <template slot-scope="scope">
                     <div v-if="scope.row.made">随机掉落</div>
                     <div v-else>
                             
                     </div>
-                </tempalte>
+                </template>
             </el-table-column>
             <el-table-column label='操作' >
                 <template slot-scope="scope">
