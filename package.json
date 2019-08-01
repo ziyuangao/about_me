@@ -1,5 +1,5 @@
 {
-  "name": "myobj",
+  "name": "mydemo",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "gao <ziyuan.gao@apicloud.com>",
@@ -7,15 +7,19 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
+    "test": "npm run unit",
     "build": "node build/build.js"
   },
   "dependencies": {
-    "ali-oss": "^6.0.1",
-    "axios": "^0.18.0",
-    "echarts": "^4.2.0-rc.2",
-    "element-ui": "^2.4.7",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "axios": "^0.18.0",
+    "babel-plugin-component": "^1.1.1",
+    "babel-polyfill": "^6.26.0",
+    "echarts": "^4.2.1",
+    "element-ui": "^2.4.7",
+    "vue-cropper": "^0.4.9",
+    "vue-i18n": "^8.1.0",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
@@ -35,7 +39,6 @@
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
-    "mongodb": "^3.1.10",
     "node-notifier": "^5.1.2",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view class="waper" />
+    <router-view/>
   </div>
 </template>
 
@@ -11,15 +11,6 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-.waper{
-  width: 100%;
-  height: 100%;
-}
+    @import "../static/css/main.css";
+    @import "../static/css/color-dark.css";     /*深色主题*/
 </style>

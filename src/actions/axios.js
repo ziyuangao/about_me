@@ -2,7 +2,13 @@ import qs from 'qs';
 import { Message } from 'element-ui';
 
 export default function (axios,router) {
+
   axios.defaults.timeout = 50000; //超时时间
+  axios.defaults.baseURL = ''; //默认地址
+  axios.defaults.withCredentials = true;//允许携带cookie数据
+  axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'; //post的默认请求头
+
+
 
   axios.interceptors.request.use((config) => {//去掉option测试请求
       if(config.method === 'post') {
@@ -47,7 +53,8 @@ export default function (axios,router) {
               type: 'error'
             });
             if(errors.code == "00002"){
-                localStorage.removeItem('ms_username');
+                
+                sessionStorage.removeItem('ms_username');
                 router.history.push("/login")
             }
             break;
