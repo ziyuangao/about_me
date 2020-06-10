@@ -1,11 +1,10 @@
 <template>
     <div class="wrapper">
-        <!-- <v-head :admin="admin"></v-head> -->
         <v-head ></v-head>
         <v-sidebar ></v-sidebar>
         <div class="content-box" :class="{'content-collapse':collapse}">
             <v-tags></v-tags>
-            <div class="content">
+            <div class="content" ref="content">
                 <transition name="move" mode="out-in">
                     <keep-alive :include="tagsList">
                         <router-view></router-view>
@@ -22,8 +21,6 @@
     import vTags from './Tags.vue';
     import bus from './bus';
     export default {
-        computed: {
-        },
         data(){
             return {
                 tagsList: [],
@@ -45,6 +42,6 @@
                 }
                 this.tagsList = arr;
             })
-        }
+        },
     }
 </script>

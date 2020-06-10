@@ -2,7 +2,7 @@
     <nav>
         <div class="grid-content">
             <div class="pagination">
-                <el-pagination class="marginTop10"
+                <el-pagination
                 @size-change="handleSizeChange"
                 @current-change="handleCurrentChange"
                 :current-page="currPage"

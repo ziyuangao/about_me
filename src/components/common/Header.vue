@@ -1,10 +1,12 @@
 <template>
     <div class="header">
-        <!-- 折叠按钮 -->
+        <!-- left -->
         <div class="collapse-btn" @click="collapseChage">
             <i class="el-icon-menu"></i>
         </div>
-        <div class="logo">后台管理系统</div>
+        <div class="logo">数据查询</div>
+
+        <!-- right -->
         <div class="header-right">
             <div class="header-user-con">
                 <!-- 全屏显示 -->
@@ -13,15 +15,6 @@
                         <i class="el-icon-rank"></i>
                     </el-tooltip>
                 </div>
-                <el-dropdown v-if="true" class="user-name" trigger="click" @command="handleCommand">
-                    <span class="el-dropdown-link">
-                       {{roleName?roleName:'admin' }}<i class="el-icon-caret-bottom"></i>
-                    </span>
-                    <el-dropdown-menu slot="dropdown">
-                        <!-- <el-dropdown-item divided  command="resetpasswd">重置密码</el-dropdown-item> -->
-                        <el-dropdown-item divided  command="loginout">退出登录</el-dropdown-item>
-                    </el-dropdown-menu>
-                </el-dropdown>
             </div>
         </div>
     </div>
@@ -29,48 +22,13 @@
 <script>
     import bus from '../common/bus';
     export default {
-        // props: ['admin'],
-        mounted(){
-            // let userData = JSON.parse(sessionStorage.getItem('sw_username'))
-            // this.roleName = userData.roleName
-        },
         data() {
             return {
-                roleName:undefined,
                 collapse: false,
-                fullscreen: false,
-                message: 0,
-
-
-                ruleForm: {
-                    oldpassword: undefined,
-                    passwd: undefined
-                },
-                rules: {
-                    oldpassword: [
-                        { required: true, message: '请输入密码', trigger: 'blur' }
-                    ],
-                    passwd: [
-                        { required: true, message: '请输入密码', trigger: 'blur' }
-                    ]
-                }
+                fullscreen: false
             }
         },
         methods:{
-            // 用户名下拉菜单选择事件
-            handleCommand(command) {
-                if(command == 'loginout'){
-                    sessionStorage.setItem('sw_username', null);
-                    this.$router.push({
-                        path:'/login',
-                    })
-                }else if(command == "resetpasswd"){
-                    this.ruleForm = {
-                        oldpassword: undefined,
-                        passwd: undefined
-                    };
-                }
-            },
             // 侧边栏折叠
             collapseChage(){
                 this.collapse = !this.collapse;
@@ -147,39 +105,5 @@
         text-align: center;
         border-radius: 15px;
         cursor: pointer;
-    }
-    .btn-bell-badge{
-        position: absolute;
-        right: 0;
-        top: -2px;
-        width: 8px;
-        height: 8px;
-        border-radius: 4px;
-        background: #f56c6c;
-        color: #fff;
-    }
-    .btn-bell .el-icon-bell{
-        color: #fff;
-    }
-    .user-name{
-        margin-left: 10px;
-    }
-    .user-avator{
-        margin-left: 20px;
-    }
-    .user-avator img{
-        display: block;
-        width:40px;
-        height:40px;
-        border-radius: 50%;
-    }
-    .el-dropdown-link{
-        color: #fff;
-        cursor: pointer;
-    }
-    .el-dropdown-menu__item{
-        text-align: center;
-        margin: 0;
-        border: 0;
     }
 </style>
