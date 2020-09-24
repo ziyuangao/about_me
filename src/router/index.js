@@ -59,8 +59,7 @@ export default new Router({
           meta: {
             title: '云顶之弈'
           },
-        },    
-        {
+        },{
           path: '/digitalModel',
           component: resolve => require(['../components/digitalModel/index.vue'], resolve),
           meta: {
