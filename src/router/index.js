@@ -59,6 +59,13 @@ export default new Router({
           meta: {
             title: '云顶之弈'
           },
+        },    
+        {
+          path: '/digitalModel',
+          component: resolve => require(['../components/digitalModel/index.vue'], resolve),
+          meta: {
+            title: '数字模型'
+          }
         },
         // 测试
         {
@@ -69,6 +76,10 @@ export default new Router({
           }
         }
       ]
+    },
+    {
+      path:'/other',
+      component: resolve => require(['@/components/page/other.vue'], resolve)
     },
     {
       path: '/404',

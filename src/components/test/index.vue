@@ -73,6 +73,27 @@ export default {
         }
       })
     },
+    test(){
+      // 抽奖
+      var arr = [
+        {type:'A',Subtype:[
+          {name:'复活币',probability:'65'},
+          {name:'商城道具',probability:'34'},
+          {name:'Lv60~70神器武器,传承装备,宠物蛋',probability:'1'},
+        ]},
+        {type:'B',Subtype:[
+          {name:'药剂类',probability:'98'},
+          {name:'材料道具类',probability:'1'},
+          {name:'Lv60~75神器,辅助装备,魔法石',probability:'1'},
+        ]},
+        {type:'C',Subtype:[
+          {name:'契约类',probability:'65'},
+          {name:'魔盒药剂类',probability:'25'},
+          {name:'强化增幅相关道具,装扮兑换券',probability:'1'},
+        ]},
+      ]
+      
+    },
     sendMsg(){
       let _this = this;
       post('/dailyLife/insertOne',{},res=>{
@@ -89,10 +110,16 @@ export default {
         post('/dailyLife/test',obj,res=>{
             console.log(res)
         })
-    }
+    },
   },
   mounted(){
-    this.getList()
+    this.getList();
+    let minAge = 1,maxAge = 99;
+    let arr = [{},{}];
+    arr[0].values= Array.from({ length: maxAge-minAge }, (_, index) => index+minAge);
+    arr[0].defaultIndex = 19;
+    arr[1].defaultIndex = 29;
+    arr[1].values= Array.from({ length: maxAge-minAge }, (_, index) => index+minAge);
   }
 };
 </script>

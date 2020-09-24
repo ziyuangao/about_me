@@ -89,6 +89,11 @@ export default {
           index: "/test",
           title: "测试",
         }
+        ,{
+          icon: "el-icon-monitor",
+          index: "/digitalModel",
+          title: "数字模型",
+        }
       ]
     };
   },
