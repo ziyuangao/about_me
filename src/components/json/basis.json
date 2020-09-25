@@ -1,0 +1,56 @@
+[
+    {
+      "id": "1",
+      "name": "暴风大剑",
+      "desc": "+15点攻击力",
+      "src":"https://game.gtimg.cn/images/lol/act/img/tft/equip/301.png"
+    },
+    {
+      "id": "2",
+      "name": "反曲之弓",
+      "desc": "+15%攻速",
+      "src":"https://game.gtimg.cn/images/lol/act/img/tft/equip/302.png"
+    },
+    {
+      "id": "3",
+      "name": "无用大棒",
+      "desc": "+15%技能伤害",
+      "src":"https://game.gtimg.cn/images/lol/act/img/tft/equip/303.png"
+    },
+    {
+      "id": "4",
+      "name": "女神之泪",
+      "desc": "+15法力值",
+      "src":"https://game.gtimg.cn/images/lol/act/img/tft/equip/304.png"
+    },
+    {
+        "id": "5",
+        "name": "锁子甲",
+        "desc": "+25护甲",
+        "src":"https://game.gtimg.cn/images/lol/act/img/tft/equip/305.png"
+    },
+    {
+        "id": "6",
+        "name": "负极斗篷",
+        "desc": "+25点魔法抗性",
+        "src":"https://game.gtimg.cn/images/lol/act/img/tft/equip/306.png"
+    },
+    {
+      "id": "7",
+      "name": "巨人腰带",
+      "desc": "+200生命值",
+      "src":"https://game.gtimg.cn/images/lol/act/img/tft/equip/307.png"
+    },
+    {
+        "id": "8",
+        "name": "金铲铲",
+        "desc": "特殊装备",
+        "src":"https://game.gtimg.cn/images/lol/act/img/tft/equip/308.png"
+    },
+    {
+        "id": "9",
+        "name": "拳套",
+        "desc": "+10暴击+10闪避",
+        "src":"https://game.gtimg.cn/images/lol/act/img/tft/equip/309.png"
+    }
+  ]
