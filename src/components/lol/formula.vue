@@ -72,30 +72,6 @@ export default {
     box-sizing: border-box;
 }
 
-.targer {
-  padding: 10px;
-}
-
-.base,
-.synthesis--select {
-  display: flex;
-  justify-content: center;
-  flex-flow: column nowrap;
-}
-
-.base-item,
-.synthesis-item--select {
-  width: calc(100% / 1.5);
-  height: calc(100% / 1.5);
-  padding: 8px;
-  font-size: 0;
-}
-
-.info {
-  color: #ffffff;
-  margin: 20px 6px;
-}
-
 .info-name {
   font-size: 18px;
   margin-bottom: 20px;
