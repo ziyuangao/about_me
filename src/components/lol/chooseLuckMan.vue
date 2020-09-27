@@ -21,17 +21,25 @@
         ></el-tag>
         <el-divider></el-divider>
         <div v-show="availableArr.length">
-            <div class="availableArr">
-                <span>羁绊效果：</span>
-                <div>
-                    <div v-if="attr && attr.info && attr.info.introduce" type="text" v-text="attr && attr.info && attr.info.introduce" :underline="false"></div>
-                    <div v-for="(item,index) in attr && attr.info && attr.info.config" :key="index" style="margin:10px 0" >
-                        <el-badge :value="item.num" class="item">
-                            <el-button v-text="item.effect"></el-button>
-                        </el-badge>
+                <div class="availableArr">
+                    <span>羁绊效果：</span>
+                    <div>
+                        <div v-if="attr && attr.info && attr.info.introduce" type="text" v-text="attr && attr.info && attr.info.introduce" :underline="false"></div>
+                        <div v-for="(item,index) in attr && attr.info && attr.info.config" :key="index" style="margin:10px 0" >
+                            <el-badge :value="item.num" class="item">
+                                <el-button v-text="item.effect"></el-button>
+                            </el-badge>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="availableArr">
+                    <span>羁绊解读：</span>
+                    <div v-text="attr.explain_info" ></div>
+                </div>
+                 <div class="availableArr">
+                    <span>核心英雄：</span>
+                    <div v-text="attr.core" ></div>
+                </div>
             <el-divider></el-divider>
             <div class="availableArr">
                 <span>天选之人：</span>
@@ -45,6 +53,11 @@
                         effect="dark"
                     ></el-tag>
                 </div>
+            </div>
+            <el-divider></el-divider>
+            <div class="availableArr" v-show="luckMan.id">
+                <span>推荐装备：</span>
+                <div v-text="luckMan.equipment"></div>
             </div>
         </div>
     </div>
