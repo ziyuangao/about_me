@@ -1,75 +1,67 @@
 <template>
-    <div>
-        <span>职业：</span>
-        <el-tag
-          v-for="(item, index) in jobList"
-          :type="tabIdx == 1 && curIdx == index ? '' : 'success'"
-          :key="item.id"
-          v-text="item.job"
-          @click="chooseLuckAttr(item,index,1)"
-          effect="dark"
-        ></el-tag>
-        <el-divider></el-divider>
-        <span>特质：</span>
-        <el-tag
-          v-for="(item, index) in typeList"
-          :type="tabIdx == 2 && curIdx == index ? '' : 'success'"
-          :key="item.id"
-          v-text="item.type"
-          @click="chooseLuckAttr(item,index,2)"
-          effect="dark"
-        ></el-tag>
-        <el-divider></el-divider>
-        <div v-show="availableArr.length">
-                <div class="availableArr">
-                    <span>羁绊效果：</span>
-                    <div>
-                        <div v-if="attr && attr.info && attr.info.introduce" type="text" v-text="attr && attr.info && attr.info.introduce" :underline="false"></div>
-                        <div v-for="(item,index) in attr && attr.info && attr.info.config" :key="index" style="margin:10px 0" >
-                            <el-badge :value="item.num" class="item">
-                                <el-button v-text="item.effect"></el-button>
-                            </el-badge>
-                        </div>
-                    </div>
-                </div>
-                <div class="availableArr">
-                    <span>羁绊解读：</span>
-                    <div v-text="attr.explain_info" ></div>
-                </div>
-                 <div class="availableArr">
-                    <span>核心英雄：</span>
-                    <div v-text="attr.core" ></div>
-                </div>
-            <el-divider></el-divider>
-            <div class="availableArr">
-                <span>天选之人：</span>
-                <div>
-                   <el-tag
-                        v-for="(item) in availableArr"
-                        :key="item.id"
-                        v-text="item.name"
-                        :type="luckMan.id == item.id ? 'luckMan':'success'"
-                        @click="chooseLuckMan(item)"
-                        effect="dark"
-                    ></el-tag>
-                </div>
-            </div>
-            <el-divider></el-divider>
-            <div class="availableArr" v-show="luckMan.id">
-                <span>推荐装备：</span>
-                <div v-text="luckMan.equipment"></div>
-            </div>
+  <div class="luckman">
+    <span>职业：</span>
+    <el-tag  v-for="(item, index) in jobList" :type="tabIdx == 1 && curIdx == index ? '' : 'success'"
+    :key="item.id" v-text="item.job" @click="chooseLuckAttr(item, index, 1)" effect="dark"></el-tag>
+    <el-divider></el-divider>
+    <span>特质：</span>
+    <el-tag
+      v-for="(item, index) in typeList" :type="tabIdx == 2 && curIdx == index ? '' : 'success'"
+      :key="item.id" v-text="item.type" @click="chooseLuckAttr(item, index, 2)" effect="dark" ></el-tag>
+    <el-divider></el-divider>
+    <div v-show="availableArr.length">
+      <div class="availableArr">
+        <span>羁绊效果：</span>
+        <div class="availableArrItems">
+          <div v-if="attr && attr.info && attr.info.introduce" type="text" v-text="attr && attr.info && attr.info.introduce" :underline="false" ></div>
+          <div v-for="(item, index) in attr && attr.info && attr.info.config" :key="index" style="margin: 10px 0">
+            <el-tag v-text="item.num"></el-tag> <span v-text="item.effect"></span>
+            <!-- <el-badge :value="item.num" class="item"><el-button v-text="item.effect"></el-button></el-badge> -->
+          </div>
         </div>
+      </div>
+      <el-divider></el-divider>
+      <div class="availableArr">
+        <span>官方推荐：</span>
+        <div>
+          <div v-for="(item,index) in attr.team" :key="index" v-text="item" style="margin:5px 0"  ></div>
+        </div>
+      </div>
+      <div v-show="luckMan.id">
+        <el-divider></el-divider>
+        <div class="availableArr">
+          <span>个人建议：</span>
+          <div>
+            <div v-for="(item,index) in attr.mate" :key="index" v-text="item.recommend" v-show="item.id == luckMan.id"  style="margin:5px 0"  ></div>
+          </div>
+        </div>
+      </div>
+      <el-divider></el-divider>
+      <div class="availableArr">
+        <span>天选之人：</span>
+        <div>
+          <el-tag
+            v-for="item in availableArr"
+            :key="item.id"
+            v-text="item.name"
+            :type="luckMan.id == item.id ? 'luckMan' : 'success'"
+            @click="chooseLuckMan(item)"
+            effect="dark"
+          ></el-tag>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-import heroList from "../json/hero.json";
-import jobList from "../json/jobList.json";
-import typeList from "../json/typeList.json";
+/* eslint-disable eqeqeq */
+import heroList from '../json/hero.json'
+import jobList from '../json/jobList.json'
+import typeList from '../json/typeList.json'
 export default {
-  name: "chooseLuckMan",
-  data() {
+  name: 'luckman',
+  data () {
     return {
       attr: {},
       tabIdx: undefined,
@@ -79,97 +71,103 @@ export default {
       typeList: [],
       luckMan: {},
       availableArr: [],
-    };
+      test: {}
+    }
   },
-  created() {
-    //生命周期 没有dom 但是可以获取到data中的变量
-    this.initDate();
-    this.jobList = jobList;
-    this.typeList = typeList;
-    this.heroList = heroList;
-    this.heroList.forEach(item=>{
-        item.typeInfo = [];
-        item.jobInfo = [];
-        item.type.forEach(typeID=>{
-            this.typeList.forEach(typeListItem=>{
-                if(typeListItem.typeID == typeID){
-                    item.typeInfo.push(typeListItem)
-                }
-            })
+  created () {
+    // 生命周期 没有dom 但是可以获取到data中的变量
+    this.initDate()
+    this.jobList = jobList
+    this.typeList = typeList
+    this.heroList = heroList
+    this.heroList.forEach((item) => {
+      item.typeInfo = []
+      item.jobInfo = []
+      item.type.forEach((typeID) => {
+        this.typeList.forEach((typeListItem) => {
+          if (typeListItem.typeID == typeID) {
+            item.typeInfo.push(typeListItem)
+          }
         })
-        item.job.forEach(jobID=>{
-            this.jobList.forEach(jobListItem=>{
-                if(jobListItem.jobID == jobID){
-                    item.jobInfo.push(jobListItem)
-                }
-            })
+      })
+      item.job.forEach((jobID) => {
+        this.jobList.forEach((jobListItem) => {
+          if (jobListItem.jobID == jobID) {
+            item.jobInfo.push(jobListItem)
+          }
         })
+      })
     })
   },
-  mounted(){
+  mounted () {
     //   console.log(this.heroList)
   },
   methods: {
-    initDate() {
-        this.attr={};
-        this.tabIdx=undefined;
-        this.curIdx=undefined;
-        this.luckMan={};
-        this.availableArr = [];
+    initDate () {
+      this.attr = {}
+      this.tabIdx = undefined
+      this.curIdx = undefined
+      this.luckMan = {}
+      this.availableArr = []
     },
-    chooseLuckAttr(item, index, num) {
-        let bol = false; //bol控制器 如果当前选中的和已存在的 一样时  那么取消选中
-        this.tabIdx = num;//记录当前选择的是职业还是特质
-        this.curIdx = index;//记录当前选择的是哪一项
-        this.availableArr = [];//符合条件的数组  初始化
-        this.luckMan = {};//天选之人  初始化
-        if(num==1){//当选择职业的时候  jobID
-            // this.attr.jobID
-            if(this.attr.jobID == item.jobID){
-                bol = true
-            }
-        }else{//当选择特质的时候  typeID
-            if(this.attr.typeID == item.typeID){
-                bol = true
-            }
+    chooseLuckAttr (item, index, num) {
+      let bol = false // bol控制器 如果当前选中的和已存在的 一样时  那么取消选中
+      this.tabIdx = num // 记录当前选择的是职业还是特质
+      this.curIdx = index // 记录当前选择的是哪一项
+      this.availableArr = [] // 符合条件的数组  初始化
+      this.luckMan = {} // 天选之人  初始化
+      if (num == 1) {
+        // 当选择职业的时候  jobID
+        // this.attr.jobID
+        if (this.attr.jobID == item.jobID) bol = true
+      } else {
+        // 当选择特质的时候  typeID
+        if (this.attr.typeID == item.typeID) bol = true
+      }
+      if (bol) {
+        this.initDate()
+        return false
+      } else {
+        this.attr = item
+        if (num == 1) {
+          // 当选择职业的时候  jobID
+          // 数据处理  把符合条件的数据 推入到新的数组中
+          this.heroList.forEach((item) => {
+            item.jobInfo.forEach((jobItem) => {
+              if (jobItem.jobID == this.attr.jobID) {
+                this.availableArr.push(item)
+              }
+            })
+          })
+        } else {
+          // 当选择特质的时候  typeID
+          this.heroList.forEach((item) => {
+            item.typeInfo.forEach((typeItem) => {
+              if (typeItem.typeID == this.attr.typeID) {
+                this.availableArr.push(item)
+              }
+            })
+          })
         }
-        if(bol){
-            this.initDate();
-            return
-        }else{
-            this.attr = item;
-            if(num==1){//当选择职业的时候  jobID
-                // 数据处理  把符合条件的数据 推入到新的数组中
-                this.heroList.forEach(item=>{
-                    item.jobInfo.forEach(jobItem=>{
-                        if(jobItem.jobID == this.attr.jobID){
-                            this.availableArr.push(item)
-                        }
-                    })
-                })
-            }else{//当选择特质的时候  typeID
-                this.heroList.forEach(item=>{
-                    item.typeInfo.forEach(typeItem=>{
-                        if(typeItem.typeID == this.attr.typeID){
-                            this.availableArr.push(item)
-                        }
-                    })
-                })
-            }
-        } 
+      }
     },
-    chooseLuckMan(obj) {
-        if(this.luckMan.id == obj.id){
-            this.luckMan = {}
-        }else{
-            this.luckMan = obj;
-        }
-    },
-  },
-};
+    chooseLuckMan (obj) {
+      if (this.luckMan.id == obj.id) this.luckMan = {}
+      else this.luckMan = obj
+    }
+  }
+}
 </script>
 
 <style scoped>
+.luckman{
+  text-align: left;
+  width: 100%;
+  overflow: hidden;
+}
+.el-divider{
+  margin: 12px 0;
+}
 .el-tag {
   margin: 0 10px;
   cursor: pointer;
@@ -184,12 +182,16 @@ export default {
   color: #f56c6c;
   border: 1px solid #f56c6c;
 }
-.availableArr{
-    display: flex;
-    justify-content: start;
-    flex-wrap: wrap;
+.availableArr {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  align-items: center;
 }
-.availableArr span{
-    margin-right: 10px;
+.availableArr span {
+  margin-right: 10px;
+}
+.availableArrItems{
+  flex-basis: 90%;
 }
 </style>
