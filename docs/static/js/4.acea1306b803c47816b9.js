@@ -1,0 +1,2 @@
+webpackJsonp([4],{KLkV:function(e,t,s){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n={render:function(){var e=this.$createElement;return(this._self._c||e)("div",{staticClass:"resume"},[this._v("resume")])},staticRenderFns:[]},r=s("C7Lr")(null,n,!1,null,null,null);t.default=r.exports}});
+//# sourceMappingURL=4.acea1306b803c47816b9.js.map
