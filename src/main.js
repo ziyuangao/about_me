@@ -1,16 +1,16 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import vuex from 'vuex'; // 统一变量控制
+// import vuex from 'vuex'; // 统一变量控制
 import App from './App'
 import router from './router'; // 路由
 import ElementUI from 'element-ui'; // ele
 import VueI18n from 'vue-i18n'; // ele多语言
-import store from './store'; // 统一变量控制
+// import store from './store'; // 统一变量控制
 
-import axios from 'axios'; // ajax
-import axiosfn from './actions/axios.js'; // 对ajax配置
-global.axios = axiosfn(axios,router); // 把axios放到全局
+// import axios from 'axios'; // ajax
+// import axiosfn from './actions/axios.js'; // 对ajax配置
+// global.axios = axiosfn(axios,router); // 把axios放到全局
 import '../static/css/icon.css';
 Vue.config.productionTip = false
 
@@ -25,7 +25,7 @@ Vue.prototype.$echarts = echarts
 // Vue.use(VueCropper)
 
 
-Vue.use(vuex); // 统一变量控制
+// Vue.use(vuex); // 统一变量控制
 Vue.use(VueI18n); //  // 多语言
 Vue.use(ElementUI, { // 引入eleUI组件 初始ele组件配置
   zIndex: 999,
@@ -66,7 +66,7 @@ new Vue({
   el: '#app',
   router,
   i18n,
-  store,//使用store
+  // store,//使用store
   components: {
     App,
   },
