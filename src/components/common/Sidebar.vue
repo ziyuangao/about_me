@@ -49,7 +49,7 @@ export default {
       collapse: false,
       menuList: [
         {
-          icon: "el-icon-setting",
+          icon: "el-icon-house",
           index: "/index",
           title: "首页",
         },

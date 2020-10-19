@@ -20,7 +20,7 @@ export default new Router({
           path: '/index',
           component: resolve => require(['../components/index/index.vue'], resolve),
           meta: {
-            title: '日常'
+            title: '首页'
           }
         },
         {

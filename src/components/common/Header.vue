@@ -4,7 +4,7 @@
         <div class="collapse-btn" @click="collapseChage">
             <i class="el-icon-menu"></i>
         </div>
-        <div class="logo">梓原</div>
+        <div class="logo">gaoziyuan.中国</div>
 
         <!-- right -->
         <div class="header-right">
