@@ -69,6 +69,6 @@ var routes = [
 
 export default new Router({
   mode: 'history',
-  base: '/about_me/', //如果项目根目录不为域名，则添加该行
+  base: '/', //如果项目根目录不为域名，则添加该行
   routes: routes
 })
