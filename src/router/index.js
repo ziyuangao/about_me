@@ -58,12 +58,8 @@ var routes = [
     },
     {
       path: '/404',
-      meta: { title: '后台管理系统' },
+      meta: { title: '/404' },
       component: resolve => require(['@/components/common/404.vue'], resolve)
-    },
-    {
-      path: '*',
-      redirect: '/404'
     }
   ]
 
