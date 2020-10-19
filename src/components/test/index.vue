@@ -113,13 +113,13 @@ export default {
     },
   },
   mounted(){
-    this.getList();
-    let minAge = 1,maxAge = 99;
-    let arr = [{},{}];
-    arr[0].values= Array.from({ length: maxAge-minAge }, (_, index) => index+minAge);
-    arr[0].defaultIndex = 19;
-    arr[1].defaultIndex = 29;
-    arr[1].values= Array.from({ length: maxAge-minAge }, (_, index) => index+minAge);
+    // this.getList();
+    // let minAge = 1,maxAge = 99;
+    // let arr = [{},{}];
+    // arr[0].values= Array.from({ length: maxAge-minAge }, (_, index) => index+minAge);
+    // arr[0].defaultIndex = 19;
+    // arr[1].defaultIndex = 29;
+    // arr[1].values= Array.from({ length: maxAge-minAge }, (_, index) => index+minAge);
   }
 };
 </script>

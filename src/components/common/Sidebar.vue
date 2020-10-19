@@ -49,51 +49,30 @@ export default {
       collapse: false,
       menuList: [
         {
-          icon: "el-icon-cpu",
-          index: "0",
-          title: "阴阳师",
-          subs: [
-            {
-              index: "/yys",
-              title: "资源获取"
-            },
-            {
-              index: "/reward",
-              title: "悬赏封印"
-            },
-            {
-              index: "/questions",
-              title: "逢魔之时答题"
-            },
-            {
-              index: "/break_through",
-              title: "突破/道馆"
-            },
-          ]
-        },{
-          icon: "el-icon-coffee-cup",
-          index: "1",
-          title: "LOL",
-          subs: [
-            {
-              index: "/search",
-              title: "韩服查询"
-            },
-            {
-              index: "/teamfightTactics",
-              title: "云顶之弈"
-            },
-          ]
-        },{
           icon: "el-icon-setting",
-          index: "/test",
-          title: "测试",
-        }
-        ,{
-          icon: "el-icon-monitor",
-          index: "/digitalModel",
-          title: "数字模型",
-        }
+          index: "/index",
+          title: "首页",
+        },
+        {
+          icon: "el-icon-chat-round",
+          index: "/dailylife",
+          title: "日常",
+        },
+        {
+          icon: "el-icon-document",
+          index: "/resume",
+          title: "简历",
+        },
+        {
+          icon: "el-icon-menu",
+          index: "/tools",
+          title: "工具",
+        },
+        {
+          icon: "el-icon-picture-outline",
+          index: "/phots",
+          title: "照片",
+        },
       ]
     };
   },

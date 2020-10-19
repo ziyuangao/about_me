@@ -7,7 +7,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/yys'
+      redirect: '/index'
     },
     {
       path: '/home',
@@ -16,74 +16,51 @@ export default new Router({
         title: '自述文件'
       },
       children: [
-        // YYS
         {
-          path: '/yys',
-          component: resolve => require(['../components/yys/index.vue'], resolve),
+          path: '/index',
+          component: resolve => require(['../components/index/index.vue'], resolve),
           meta: {
-            title: '资源获取'
-          },
-        },
-        {
-          path: '/reward',
-          component: resolve => require(['../components/yys/reward.vue'], resolve),
-          meta: {
-            title: '悬赏封印'
-          },
-        },
-        {
-          path: '/questions',
-          component: resolve => require(['../components/yys/questions.vue'], resolve),
-          meta: {
-            title: '逢魔之时答题'
-          },
-        },
-        {
-          path: '/break_through',
-          component: resolve => require(['../components/yys/break_through.vue'], resolve),
-          meta: {
-            title: '突破/道馆'
-          },
-        },
-        // LOL
-        {
-          path: '/search',
-          component: resolve => require(['../components/lol/index.vue'], resolve),
-          meta: {
-            title: '韩服查询'
-          },
-        },
-        {
-          path: '/teamfightTactics',
-          component: resolve => require(['../components/lol/teamfightTactics.vue'], resolve),
-          meta: {
-            title: '云顶之弈'
-          },
-        },{
-          path: '/digitalModel',
-          component: resolve => require(['../components/digitalModel/index.vue'], resolve),
-          meta: {
-            title: '数字模型'
+            title: '日常'
           }
         },
-        // 测试
         {
-          path: '/test',
-          component: resolve => require(['../components/test/index.vue'], resolve),
+          path: '/dailylife',
+          component: resolve => require(['../components/dailylife/index.vue'], resolve),
           meta: {
-            title: '测试'
+            title: '日常'
+          }
+        },
+        {
+          path: '/resume',
+          component: resolve => require(['../components/resume/index.vue'], resolve),
+          meta: {
+            title: '简历'
+          }
+        },
+        {
+          path: '/tools',
+          component: resolve => require(['../components/tools/index.vue'], resolve),
+          meta: {
+            title: '工具'
+          }
+        },
+        {
+          path: '/photos',
+          component: resolve => require(['../components/photos/index.vue'], resolve),
+          meta: {
+            title: '照片'
           }
         }
       ]
     },
     {
       path:'/other',
-      component: resolve => require(['@/components/page/other.vue'], resolve)
+      component: resolve => require(['@/components/common/other.vue'], resolve)
     },
     {
       path: '/404',
       meta: { title: '后台管理系统' },
-      component: resolve => require(['@/components/page/404.vue'], resolve)
+      component: resolve => require(['@/components/common/404.vue'], resolve)
     },
     {
       path: '*',

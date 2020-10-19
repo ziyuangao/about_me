@@ -4,7 +4,7 @@
         <div class="collapse-btn" @click="collapseChage">
             <i class="el-icon-menu"></i>
         </div>
-        <div class="logo">数据查询</div>
+        <div class="logo">梓原</div>
 
         <!-- right -->
         <div class="header-right">
