@@ -3,8 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({
-  routes: [
+var routes = [
     {
       path: '/',
       redirect: '/index'
@@ -67,4 +66,9 @@ export default new Router({
       redirect: '/404'
     }
   ]
+
+export default new Router({
+  mode: 'history',
+  base: '/about_me/', //如果项目根目录不为域名，则添加该行
+  routes: routes
 })
